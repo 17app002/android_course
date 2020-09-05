@@ -7,6 +7,8 @@
     <string name="bmi">BMI</string>
     <string name="result">計算結果</string>
     <string name="comments">評等</string>
+    <string name="female">女生</string>
+    <string name="male">男生</string>
 </resources>
 
 

@@ -43,24 +43,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/sex"
         android:textSize="22sp"
-        app:layout_constraintEnd_toStartOf="@+id/edit_sex"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/edit_age" />
-
-    <EditText
-        android:id="@+id/edit_sex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/login_div_bg"
-        android:ems="10"
-        android:hint="@string/sex"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:paddingLeft="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/edit_age"
-        app:layout_constraintStart_toStartOf="@+id/edit_age"
         app:layout_constraintTop_toBottomOf="@+id/edit_age" />
 
     <TextView
@@ -150,7 +133,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_sex" />
+        app:layout_constraintTop_toBottomOf="@+id/radio_sex" />
 
     <TextView
         android:id="@+id/text_comment"
@@ -165,5 +148,38 @@
         app:layout_constraintStart_toStartOf="@+id/btn_bmi"
         app:layout_constraintTop_toBottomOf="@+id/btn_bmi"
         app:layout_constraintVertical_bias="0.634" />
+
+    <RadioGroup
+        android:id="@+id/radio_sex"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:checkedButton="@id/radio_male"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/edit_age"
+        >
+
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:text="@string/male" />
+
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:text="@string/female" />
+
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
