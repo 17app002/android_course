@@ -15,7 +15,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnOk;
-    TextView textResult;
+    TextView tvUserName;
     CheckBox checkBox1;
     CheckBox checkBox2;
     CheckBox checkBox3;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         btnOk = findViewById(R.id.btn_ok);
-        textResult = findViewById(R.id.text_result);
+        tvUserName = findViewById(R.id.text_result);
 
         checkBox1 = findViewById(R.id.checkBox1);
         checkBox2 = findViewById(R.id.checkBox2);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 result += checkBox.getText().toString() + "\n";
             }
         }
-        textResult.setText(result);
+        tvUserName.setText(result);
 
     }
 
