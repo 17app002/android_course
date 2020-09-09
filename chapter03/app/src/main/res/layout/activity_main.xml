@@ -21,26 +21,26 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/language_rbtn1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:checked="true"
             android:text="Java" />
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/language_rbtn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="C#" />
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/language_rbtn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Python" />
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/language_rbtn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -55,33 +55,33 @@
         android:textSize="24sp"></TextView>
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/school_chk1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="台北館前" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/school_chk2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="忠孝復興" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/school_chk3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="板橋府中"
       />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/school_chk4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="中壢中正" />
 
     <Button
-        android:id="@+id/btn_ok"
+        android:id="@+id/ok_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="確定選課"
@@ -92,7 +92,7 @@
 
     </Button>
     <TextView
-        android:id="@+id/text_result"
+        android:id="@+id/result_tv"
         android:layout_width="match_parent"
         android:layout_height="378dp"
         android:layout_marginTop="8dp"
