@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">BMI計算器</string>
+    <string name="height">身高</string>
+    <string name="weight">體重</string>
+    <string name="sex">性別</string>
+    <string name="bmi">BMI</string>
+    <string name="calculation">計算</string>
+    <string name="comments">評等</string>
+    <string name="female">女生</string>
+    <string name="male">男生</string>
+    <string name="report">BMI數值</string>
+    <string name="back">返回</string>
+</resources>
+
+
+
+
