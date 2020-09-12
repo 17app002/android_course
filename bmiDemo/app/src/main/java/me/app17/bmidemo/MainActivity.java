@@ -15,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    enum sex {MALE, FEMALE}
-
-    ;
+    enum Sex {MALE, FEMALE};
 
     EditText heightEdtTxt;
     EditText weightEdtTxt;
@@ -36,8 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //heightEdtTxt.setText("165.5");
         //weightEdtTxt.setText("57.5");
-
-
+        //System.out.println(Sex.MALE);
     }
 
 

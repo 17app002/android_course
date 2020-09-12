@@ -1,4 +1,4 @@
-package me.app17.ch02;
+package me.app17.bmidemo;
 
 import org.junit.Test;
 
@@ -12,6 +12,11 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
+        String msg = String.format("您身高為:%.1f 體重:%.1f\nBMI指數為:%.2f", 100.5, 165.5, 32.5);
+        System.out.println(msg);
         assertEquals(4, 2 + 2);
     }
+
+
+
 }
