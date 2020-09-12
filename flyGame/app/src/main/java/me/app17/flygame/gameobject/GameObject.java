@@ -49,9 +49,9 @@ public abstract class GameObject {
 
     public GameObject(int x, int y, Bitmap image) {
         this();
-        this.image=image;
-        image = Bitmap.createScaledBitmap(image, screenSize.x, screenSize.y, false);
-
+        this.image = image;
+        //image = Bitmap.createScaledBitmap(image, screenSize.x, screenSize.y, false);
+        image = Bitmap.createBitmap(image);
 
         this.x = x;
         this.y = y;

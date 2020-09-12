@@ -12,6 +12,8 @@ import android.media.Image;
 import android.view.SurfaceView;
 import android.view.View;
 
+import java.io.InputStream;
+
 public class GameView extends SurfaceView implements Runnable {
     private final int FPS = 60;
     private Thread thread;
@@ -26,7 +28,7 @@ public class GameView extends SurfaceView implements Runnable {
     private Background background;
     private Blood blood;
 
-    public Bitmap[] tankImg = new Bitmap[8];
+    public Bitmap[] iTankImage = new Bitmap[8];
     private Tank playerTank;
 
     public GameView(Context context, Point screenSize) {
@@ -41,18 +43,20 @@ public class GameView extends SurfaceView implements Runnable {
         paint = new Paint();
         paint.setTextSize(128);
         paint.setColor(Color.WHITE);
-        background = new Background(0, 0, BitmapFactory.decodeResource(getResources(), R.drawable.background));
-        blood = new Blood(100, 200, BitmapFactory.decodeResource(getResources(), R.drawable.blood));
+
+        background = new Background(0, 0, GameActivity.getImage("background.png"));
+        blood = new Blood(100, 200,GameActivity.getImage("blood.png"));
 
 
-        int[] tankImageId={R.drawable.itanku,R.drawable.itankd,R.drawable.itankl,R.drawable.itankr,
-                R.drawable.itanklu,R.drawable.itankru,R.drawable.itankld,R.drawable.itankrd};
 
-        for(int i=0;i<tankImg.length;i++){
-            tankImg[i]=BitmapFactory.decodeResource(getResources(), tankImageId[i]);
+        String[] sub = {"u.png", "d.png", "l.png", "r.png", "lu.png", "ru.png", "ld.png", "rd.png"};
+
+        for (int i = 0; i < iTankImage.length; i++) {
+            iTankImage[i] = GameActivity.getImage("itank" + sub[i]);
         }
 
-        playerTank = new Tank(400, 50, tankImg, Direction.DOWN, false);
+
+        playerTank = new Tank(400, 50, iTankImage, Direction.DOWN, false);
     }
 
     public static GameView getInstance() {
@@ -82,11 +86,6 @@ public class GameView extends SurfaceView implements Runnable {
         background.draw(canvas);
         blood.draw(canvas);
         playerTank.draw(canvas);
-
-
-
-
-
         getHolder().unlockCanvasAndPost(canvas);
 
 
@@ -130,4 +129,6 @@ public class GameView extends SurfaceView implements Runnable {
     public Paint getPaint() {
         return paint;
     }
+
+
 }
