@@ -23,7 +23,7 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        instance=this;
+        instance = this;
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -34,14 +34,18 @@ public class GameActivity extends AppCompatActivity {
         System.out.println(screenSize);
 
 
-
         gameView = new GameView(this, screenSize);
         setContentView(gameView);
     }
 
-    public static GameActivity getInstance(){
+    public static GameActivity getInstance() {
         return instance;
     }
+
+    public GameView getGameView() {
+        return gameView;
+    }
+
 
     @Override
     protected void onPause() {

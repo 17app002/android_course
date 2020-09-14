@@ -13,6 +13,10 @@ import android.view.SurfaceView;
 import android.view.View;
 
 import java.io.InputStream;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import me.app17.flygame.gameobject.GameObject;
 
 public class GameView extends SurfaceView implements Runnable {
     private final int FPS = 60;
@@ -25,11 +29,25 @@ public class GameView extends SurfaceView implements Runnable {
     private static View instance;
 
 
-    private Background background;
-    private Blood blood;
-
     public Bitmap[] iTankImage = new Bitmap[8];
+    public static Bitmap[] eTankImage = new Bitmap[8];
+    public static Bitmap[] bulletImage = new Bitmap[8];
     private Tank playerTank;
+    private CopyOnWriteArrayList<GameObject> objects = new CopyOnWriteArrayList<>();
+
+
+    public int getScreenWidth(){
+        return screenSize.x;
+    }
+
+
+    public int getScreenHeight(){
+        return screenSize.x;
+    }
+
+    public List<GameObject> getGameObject() {
+        return objects;
+    }
 
     public GameView(Context context, Point screenSize) {
         super(context);
@@ -44,19 +62,33 @@ public class GameView extends SurfaceView implements Runnable {
         paint.setTextSize(128);
         paint.setColor(Color.WHITE);
 
-        background = new Background(0, 0, GameActivity.getImage("background.png"));
-        blood = new Blood(100, 200,GameActivity.getImage("blood.png"));
-
+//        background = new Background(0, 0, GameActivity.getImage("background.png"));
+//        blood = new Blood(100, 200,GameActivity.getImage("blood.png"));
 
 
         String[] sub = {"u.png", "d.png", "l.png", "r.png", "lu.png", "ru.png", "ld.png", "rd.png"};
 
         for (int i = 0; i < iTankImage.length; i++) {
             iTankImage[i] = GameActivity.getImage("itank" + sub[i]);
+            eTankImage[i] = GameActivity.getImage("etank" + sub[i]);
+            bulletImage[i] = GameActivity.getImage("missile" + sub[i]);
         }
 
 
-        playerTank = new Tank(400, 50, iTankImage, Direction.DOWN, false);
+        playerTank = new PlayerTank(400, 50, Direction.DOWN, iTankImage);
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                objects.add(new EnemyTank(320 + j * 100, 450 + 100 * i, Direction.UP, eTankImage));
+            }
+        }
+
+        objects.add(playerTank);
+    }
+
+    //增加物件
+    public void addGameObject(GameObject object) {
+        objects.add(object);
     }
 
     public static GameView getInstance() {
@@ -83,11 +115,25 @@ public class GameView extends SurfaceView implements Runnable {
             return;
 
         Canvas canvas = getHolder().lockCanvas();
-        background.draw(canvas);
-        blood.draw(canvas);
+
+
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawPaint(paint);
+
+        for (GameObject object : objects) {
+            object.draw(canvas);
+        }
+
+//        for (GameObject object : objects) {
+//            if (!object.isAlive()) {
+//                objects.remove(object);
+//            }
+//        }
+
+        System.out.println(objects.size());
         playerTank.draw(canvas);
         getHolder().unlockCanvasAndPost(canvas);
-
 
     }
 
@@ -129,6 +175,4 @@ public class GameView extends SurfaceView implements Runnable {
     public Paint getPaint() {
         return paint;
     }
-
-
 }
