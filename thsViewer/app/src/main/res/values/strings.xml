@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="loading">讀取</string>
-    <string name="input">輸入</string>
+    <string name="app_name">高鐵早鳥票</string>
     <string name="update">更新</string>
 </resources>

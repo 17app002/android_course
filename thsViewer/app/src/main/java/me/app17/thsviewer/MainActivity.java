@@ -1,12 +1,17 @@
 package me.app17.thsviewer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         instance = this;
         uiHandler = new Handler();
+
         findViews();
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(new THSViewer()).start();
+                itemLv.setAdapter(null);
+                new Thread(new THSViewer(itemLv)).start();
             }
         });
     }
@@ -53,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
+
 
 
