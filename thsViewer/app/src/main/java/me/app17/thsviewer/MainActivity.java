@@ -1,93 +1,59 @@
 package me.app17.thsviewer;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity  implements Runnable{
+public class MainActivity extends AppCompatActivity {
 
-    private ListView itemLv;
-    private Button updateBtn;
+    ListView itemLv;
+    Button updateBtn;
 
+    public static MainActivity instance;
+    public static Handler uiHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        itemLv=findViewById(R.id.item_lv);
-        updateBtn=findViewById(R.id.update_btn);
-
+        instance = this;
+        uiHandler = new Handler();
+        findViews();
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(new THSViewer()).start();
-                new Thread(MainActivity.this).start();
             }
         });
     }
 
-
-
-
-
-
-    @Override
-    public void run() {
-        while(true){
-            if(THSViewer.status==-1){
-                Log.i("info","連結失敗!");
-                break;
-            }
-
-            if(THSViewer.status==1){
-                Log.i("info","資料抓取成功!");
-
-                String[] columns={"no","date","start_loc","end_loc"};
-
-                List<Map<String,Object>> mapList=new ArrayList<>();
-
-                for(ThsData data:THSViewer.thsDataList){
-                    Map<String,Object> map=new HashMap<>();
-                    map.put("no",data.no);
-                    map.put("date",data.date);
-                    map.put("start_loc",data.startLoc);
-                    map.put("end_loc",data.endLoc);
-
-                    mapList.add(map);
-
-                }
-
-                final SimpleAdapter simpleAdapter=new SimpleAdapter(this,mapList,R.layout.ths_listview_layout,
-                        columns,new int[]{R.id.thsno_tv,R.id.date_tv,R.id.start_tv,R.id.end_tv});
-
-                itemLv.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        itemLv.setAdapter(simpleAdapter);
-                    }
-                });
-
-                break;
-            }
-
-
-        }
+    public void findViews() {
+        itemLv = findViewById(R.id.item_lv);
+        updateBtn = findViewById(R.id.update_btn);
     }
+
+    /***
+     * 主線程UI-Toast更新
+     * @param msg
+     */
+    //https://codertw.com/android-%E9%96%8B%E7%99%BC/352565/
+    public static void showMessage(final String msg){
+        uiHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(instance.getApplicationContext(),
+                        msg,Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }
 
 
