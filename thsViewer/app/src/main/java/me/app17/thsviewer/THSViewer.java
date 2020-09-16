@@ -3,12 +3,16 @@ package me.app17.thsviewer;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AlertDialog;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,9 +24,11 @@ import java.util.Map;
 import me.app17.thsviewer.util.JDBCUtil;
 
 
-public class THSViewer {
+public class THSViewer implements AdapterView.OnItemClickListener {
+
 
     final class ThsData {
+        int id;
         String date;
         String no;
         String price;
@@ -30,18 +36,26 @@ public class THSViewer {
         String endLoc;
         String startTime;
         String endTime;
+        String url;
+        String status;
+        int ticks;
     }
 
     //資料庫對應欄位名稱
     private String[] columns = {"no", "date", "start_loc", "end_loc", "start_time", "end_time", "price"};
     private ListView listView;
     private List<Map<String, Object>> mapList;
+    private List<ThsData> thsDataList;
+    //紀錄今天全部資料
+    private List<ThsData> allThsDataList;
 
 
     private static AlertDialog loadingDialog;
 
     public THSViewer(View view) {
         listView = (ListView) view;
+        listView.setOnItemClickListener(this);
+
     }
 
     /***
@@ -74,6 +88,7 @@ public class THSViewer {
             //取得資料
             while (resultSet.next()) {
                 ThsData thsData = new ThsData();
+                thsData.id = resultSet.getInt("id");
                 thsData.date = resultSet.getString("date");
                 thsData.no = resultSet.getString("no");
                 thsData.startLoc = resultSet.getString("start_loc");
@@ -81,8 +96,12 @@ public class THSViewer {
                 thsData.startTime = resultSet.getString("start_time");
                 thsData.endTime = resultSet.getString("end_time");
                 thsData.price = resultSet.getString("price");
+                thsData.url = resultSet.getString("url");
+                thsData.status = resultSet.getString("status");
+                thsData.ticks = resultSet.getInt("ticks");
+
                 thsDataList.add(thsData);
-                if (++count >= length) {
+                if (length != -1 && ++count >= length) {
                     break;
                 }
             }
@@ -105,6 +124,7 @@ public class THSViewer {
 
         for (ThsData data : thsDataList) {
             Map<String, Object> map = new HashMap<>();
+            map.put("id", data.id);
             map.put("no", data.no);
             map.put("date", data.date);
             map.put("start_loc", data.startLoc);
@@ -112,12 +132,16 @@ public class THSViewer {
             map.put("start_time", data.startTime);
             map.put("end_time", data.endTime);
             map.put("price", data.price);
+            map.put("url", data.url);
+            map.put("status", data.status);
+            map.put("ticks", data.ticks);
 
             mapList.add(map);
         }
 
         return mapList;
     }
+
 
     /***
      * 更新listView
@@ -135,8 +159,14 @@ public class THSViewer {
             @Override
             public void run() {
                 listView.setAdapter(simpleAdapter);
+
             }
         });
+
+        //接收資料庫完成
+        Message message = new Message();
+        message.what = 1;
+        MainActivity.uiHandler.sendMessage(message);
     }
 
 
@@ -198,7 +228,12 @@ public class THSViewer {
 
                     //移動到資料最前面
                     resultSet.beforeFirst();
-                    List<ThsData> thsDataList = getDbData(resultSet, 100);
+
+                    allThsDataList = new ArrayList<>();
+                    //儲存資料
+                    thsDataList = getDbData(resultSet, -1);
+                    allThsDataList.addAll(thsDataList);
+
                     //刷新ListView
                     if (thsDataList.size() > 0) {
                         mapList = getListData(thsDataList);
@@ -206,10 +241,7 @@ public class THSViewer {
                     }
 
                     loadingDialog.dismiss();
-                    //接收資料庫完成
-                    Message message = new Message();
-                    message.what = 1;
-                    MainActivity.uiHandler.sendMessage(message);
+
 
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -223,6 +255,44 @@ public class THSViewer {
             }
 
         }).start();
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //取得資料
+        Map<String, Object> item = (Map<String, Object>) parent.getItemAtPosition(position);
+        System.out.println(item.toString());
+        MainActivity.showMessage(item.toString());
+    }
+
+
+    public void findData(String startLoc, String endLoc, String date) {
+
+        List<ThsData> tempData = new ArrayList<>();
+
+        if (thsDataList.size() == 0) {
+            MainActivity.showMessage("請先取得資料!");
+            return;
+        }
+
+        for (ThsData data : thsDataList) {
+            if (data.startLoc.equals(startLoc) && data.endLoc.equals(endLoc) && data.date.equals(date)) {
+                tempData.add(data);
+            }
+        }
+
+
+        mapList = getListData(tempData);
+        updateListView(mapList);
+    }
+
+    /***
+     * 更新成全部資料
+     */
+    public void updateAllData() {
+        mapList = getListData(allThsDataList);
+        updateListView(mapList);
     }
 }
 

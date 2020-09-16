@@ -12,6 +12,13 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
+
+        int source = 123;
+        String pattern = "%010d"; // 格式化字串，整數，長度10，不足部分左邊補0
+        String str = String.format(pattern, source);
+
+        System.out.println(str); // 0000000123
+
         assertEquals(4, 2 + 2);
     }
 }
