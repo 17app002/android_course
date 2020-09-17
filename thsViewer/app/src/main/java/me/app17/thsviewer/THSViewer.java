@@ -1,6 +1,8 @@
 package me.app17.thsviewer;
 
 import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +26,7 @@ import java.util.Map;
 import me.app17.thsviewer.util.JDBCUtil;
 
 
-public class THSViewer implements AdapterView.OnItemClickListener {
+public class THSViewer implements AdapterView.OnItemClickListener{
 
 
     final class ThsData {
@@ -55,7 +57,6 @@ public class THSViewer implements AdapterView.OnItemClickListener {
     public THSViewer(View view) {
         listView = (ListView) view;
         listView.setOnItemClickListener(this);
-
     }
 
     /***
