@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ScrollViewDemo</string>
+    <string name="add">ADD TextView</string>
+</resources>
