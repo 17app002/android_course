@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 }
 
 class Student {
+    private int id;
     private byte sex;
     private String name;
     private int age;
@@ -71,6 +72,17 @@ class Student {
     }
 
     public Student(byte sex, String name, int age) {
+        this.sex = sex;
+        this.name = name;
+        this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Student(int id, byte sex, String name, int age) {
+        this.id = id;
         this.sex = sex;
         this.name = name;
         this.age = age;
