@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/score_label"
+        android:textSize="32sp"
+        android:textStyle="bold"></TextView>
+
+
+
+
+
+    <EditText
+        android:id="@+id/name_edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="@string/name_hint"
+        android:gravity="center_horizontal"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
+
+
+    <EditText
+        android:id="@+id/chinese_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_edt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:ems="5"
+        android:hint="@string/chinese_hint"
+        android:inputType="numberDecimal"
+        android:textSize="24sp" />
+
+
+
+
+
+    <EditText
+        android:id="@+id/english_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chinese_edt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:ems="5"
+        android:hint="@string/english_hint"
+        android:inputType="numberDecimal"
+        android:textSize="24sp" />
+
+
+    <EditText
+        android:id="@+id/math_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/english_edt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:ems="5"
+        android:hint="@string/math_hint"
+        android:inputType="numberDecimal"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/math_edt"
+        android:background="@color/colorAccent"
+        android:layout_above="@+id/submit_btn">
+
+
+    </TextView>
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="6dp"
+        android:text="@string/submit"
+        android:textSize="24sp">
+
+
+    </Button>
+
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AcivityDemo</string>
+    <string name="score_label">成績輸入</string>
+    <string name="chinese_hint">國文成績</string>
+    <string name="english_hint">英文分數</string>
+    <string name="math_hint">數學分數</string>
+    <string name="submit">確認</string>
+    <string name="result">成績結果</string>
+    <string name="back">返回</string>
+    <string name="name_hint">姓名</string>
+</resources>
