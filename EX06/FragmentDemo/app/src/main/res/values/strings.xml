@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FragmentDemo</string>
+    <string name="text_btAdd">增加Fragment</string>
+    <string name="text_btReplace">替代Fragment</string>
+    <string name="text_btAttach">貼上Fragment</string>
+    <string name="text_btDetach">撥離Fragment</string>
+    <string name="text_btRemove">移除Fragment</string>
+    <string name="text_btFinish">結束</string>
+</resources>
