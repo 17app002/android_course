@@ -8,8 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Runnable {
+    private final static int START = 0;
+    private final static int STOP = 1;
+    private final static int RESET = 2;
+
     private int seconds;
-    private boolean stop;
+    private int status;
+
     private TextView secondText;
     private Button startBtn;
     private Button stopBtn;
@@ -20,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         seconds = 0;
-        stop = true;
+        status = STOP;
         findViews();
         new Thread(this).start();
     }
@@ -40,13 +45,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.start_btn:
-                stop = false;
+                status = START;
                 break;
             case R.id.stop_btn:
-                stop = true;
+                status = STOP;
                 break;
             case R.id.reset_btn:
-                stop = true;
+                status = RESET;
                 seconds = 0;
                 break;
         }
@@ -56,11 +61,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void run() {
 
         while (true) {
-            if (stop) {
+            if (status == STOP) {
                 continue;
             }
 
             try {
+                //重置碼表
+                if (status == RESET) {
+                    status = STOP;
+                    seconds = 0;
+                    final String time = String.format("%d:%02d:%02d", 0, 0, 0);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            secondText.setText(time);
+                        }
+                    });
+                    continue;
+                }
                 Thread.sleep(1000);
                 int hour = seconds / 3600;
                 int minutes = (seconds % 3600) / 60;
@@ -73,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         secondText.setText(time);
                     }
                 });
-
                 seconds++;
 
 
