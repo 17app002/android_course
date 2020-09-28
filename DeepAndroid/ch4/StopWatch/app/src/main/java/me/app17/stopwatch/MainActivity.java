@@ -1,8 +1,10 @@
 package me.app17.stopwatch;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int seconds;
     private int status;
+    private int oldStatus;
 
     private TextView secondText;
     private Button startBtn;
@@ -26,8 +29,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         seconds = 0;
         status = STOP;
+        //紀錄目前狀態
+        oldStatus=status;
         findViews();
+
+        if(savedInstanceState!=null){
+            seconds=savedInstanceState.getInt("seconds");
+            status=savedInstanceState.getInt("status");
+            oldStatus=savedInstanceState.getInt("oldStatus");
+        }
+
+
         new Thread(this).start();
+        //runTimer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //儲存狀態
+        oldStatus=status;
+        status=STOP;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //將狀態回存，繼續計數
+        status=oldStatus;
+    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        //儲存狀態
+//        oldStatus=status;
+//        status=STOP;
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        //將狀態回存，繼續計數
+//        status=oldStatus;
+//    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("seconds",seconds);
+        outState.putInt("status",status);
+        outState.putInt("oldStatus",oldStatus);
     }
 
     public void findViews() {
@@ -58,6 +110,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public void run() {
 
         while (true) {
@@ -83,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int hour = seconds / 3600;
                 int minutes = (seconds % 3600) / 60;
                 int sec = seconds % 60;
-
+                System.out.println(Thread.currentThread());
                 final String time = String.format("%d:%02d:%02d", hour, minutes, sec);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -98,6 +155,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public void runTimer() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                int hour = seconds / 3600;
+                int minutes = (seconds % 3600) / 60;
+                int sec = seconds % 60;
+                String time = String.format("%d:%02d:%02d", hour, minutes, sec);
+                secondText.setText(time);
+                System.out.println(Thread.currentThread());
+                if (status == START) {
+                    seconds++;
+                }
+                //每一秒呼叫自己一次
+                handler.postDelayed(this, 1000);
+            }
+        });
     }
 }
 
