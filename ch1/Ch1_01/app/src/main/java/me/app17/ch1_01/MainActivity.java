@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             int number1 = Integer.valueOf(number1Edit.getText().toString());
             int number2 = Integer.valueOf(number2Edit.getText().toString());
 
-            System.out.println(number1 + number2);
+            //System.out.println(number1 + number2);
             String result = String.valueOf(number1 + number2);
             resultText.setText(result);
 

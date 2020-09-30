@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingTop="16dp"
     tools:context=".MainActivity">
 
     <Button
@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/password_edit"
         android:layout_alignRight="@id/password_edit"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/password_edit"
+        android:layout_marginTop="24dp"
         android:text="Button" />
 
     <ImageView
@@ -69,6 +70,21 @@
         android:layout_marginTop="24dp"
         android:inputType="textPassword"
         android:text="password" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:padding="3dp"
+        android:text="app17.me"
+
+        ></TextView>
+
+
+
+
 
 
 </RelativeLayout>
