@@ -3,32 +3,42 @@ package me.app17.gridlayoutdemo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView numberText;
+    //紀錄是否重新輸入
     private boolean first;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        numberText=findViewById(R.id.number_text);
-        first=true;
+        setContentView(R.layout.activity_main_1);
+        numberText = findViewById(R.id.number_text);
+        numberText.setMovementMethod(new ScrollingMovementMethod());
+        first = true;
 
     }
 
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.clear_btn:
-                numberText.setText("0");
-                first=true;
+                addNumberText("0");
+                first = true;
                 break;
             case R.id.n0_btn:
                 addNumberText("0");
@@ -57,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.n8_btn:
                 addNumberText("8");
                 break;
+            case R.id.n9_btn:
+                addNumberText("9");
+                break;
             case R.id.add_btn:
                 addNumberText("+");
                 break;
@@ -65,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.multi_btn:
                 addNumberText("*");
+                break;
+            case R.id.dot_btn:
+                addNumberText(".");
                 break;
             case R.id.div_btn:
                 addNumberText("/");
@@ -75,20 +91,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void answer(){
-        List<String> stringList=new ArrayList<String>();
+    /***
+     * 引入JavaScript engine
+     */
+    public void answer() {
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
+        try {
+            Object result = (double) engine.eval(numberText.getText().toString());
+            numberText.setGravity(Gravity.RIGHT);
+            first = true;
+            numberText.setText(result.toString());
 
-        String inputNumber=numberText.getText().toString();
-
-
+        } catch (ScriptException e) {
+            Toast.makeText(this, "Exception Raised", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public void addNumberText(String number){
+    public void addNumberText(String number) {
         //去除第一個零
-        if(first){
+        if (first) {
             numberText.setText("");
-            first=false;
+            numberText.setGravity(Gravity.LEFT);
+            first = false;
         }
-        numberText.setText(numberText.getText()+number);
+        numberText.setText(numberText.getText() + number);
     }
 }
