@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#003529"
+    android:paddingTop="12dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_marginLeft="12dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/item_sample"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF"
+        android:padding="3dp"
+        />
+
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/textView"
+        android:layout_below="@+id/item_image"
+        android:layout_margin="6dp"
+        android:padding="12dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="精心為您挑選來自不同產區的每日精選咖啡，帶給您多元的咖啡風味。"
+        android:background="@drawable/info_style"></TextView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#471C0C"
+        android:gravity="center"
+        android:text="www.starbox.com.tw"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="地瓜燕麥奶吐司帕里尼"
+        android:textColor="#ffffff"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:layout_alignTop="@+id/item_image"
+        android:textSize="24sp"
+        android:layout_toRightOf="@+id/item_image"/>
+
+    <TextView
+        android:id="@+id/price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_text"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="12dp"
+        android:background="#471C0C"
+        android:layout_toEndOf="@+id/item_image"
+        android:text="價格:75"
+        android:textColor="#FFE200"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>

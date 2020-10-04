@@ -10,18 +10,35 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton coffeeBtn;
     private ImageButton dessertBtn;
     private ImageButton storeBtn;
+
+
+    public static List<Catalog> catalogList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //fullScreen();
-
         findViews();
+        loadCatalog();
+    }
+
+    public void loadCatalog() {
+        String[] catalog = {"coffee", "dessert", "store"};
+        for (int i = 0; i < catalog.length; i++) {
+            catalogList.add(new Catalog(i, catalog[i]));
+        }
+    }
+
+    public static List<Catalog> getCatalogList() {
+        return catalogList;
     }
 
     public void findViews() {
@@ -56,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
-        if(catalog>=2){
+        if (catalog >= 2) {
             Toast.makeText(this, "功能未完成....",
                     Toast.LENGTH_SHORT).show();
             return;
