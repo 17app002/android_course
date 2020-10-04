@@ -13,8 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/icon"
-
-
         />
 
     <GridLayout
@@ -28,7 +26,6 @@
         android:columnCount="2"
         android:padding="12dp"
         android:rowCount="2"
-
         android:useDefaultMargins="true">
 
         <ImageButton
@@ -65,8 +62,6 @@
             android:elevation="10dp"
             android:padding="12dp"
             android:src="@drawable/store" />
-
-
     </GridLayout>
 
     <TextView
