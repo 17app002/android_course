@@ -10,14 +10,20 @@ public class Item implements Serializable {
     //擺放圖形id
     private int resId;
     private String title;
+    private String subTitle;
     private int price;
     private String info;
 
-    public Item(int resId, String title, int price, String info) {
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public Item(int resId, String title, String subTitle, int price, String info) {
         this.resId = resId;
         this.title = title;
         this.price = price;
         this.info = info;
+        this.subTitle = subTitle;
     }
 
     public int getResId() {
@@ -45,8 +51,6 @@ public class Item implements Serializable {
                 ", info='" + info + '\'' +
                 '}';
     }
-
-
 
 
 }
