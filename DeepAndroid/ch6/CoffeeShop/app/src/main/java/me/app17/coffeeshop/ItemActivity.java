@@ -3,6 +3,7 @@ package me.app17.coffeeshop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class ItemActivity extends AppCompatActivity {
         titleText.setText(item.getTitle());
         priceText.setText("價格:" + String.valueOf(item.getPrice()));
         infoText.setText(item.getInfo());
+        infoText.startAnimation(AnimationUtils.loadAnimation(this, R.anim.side));
 
     }
 }
