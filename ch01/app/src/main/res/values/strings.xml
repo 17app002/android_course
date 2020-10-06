@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">chapter01</string>
-    <string name="username">請輸入帳號</string>
-    <string name="password">請輸入密碼</string>
-    <string name="login">登入</string>
-    <string name="company_url">www.app17.com.tw</string>
-</resources>
