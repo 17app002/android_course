@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BMI計算機</string>
+    <string name="hint_name">請輸入姓名</string>
+    <string name="hint_height">請輸入身高</string>
+    <string name="hint_weight">請輸入體重</string>
+    <string name="hint_sex">請輸入性別</string>
+    <string name="count_btn">計算</string>
+    <string name="height">(cm)</string>
+    <string name="weight">(kg)</string>
+    <string name="sex">(男/女)</string>
+</resources>
