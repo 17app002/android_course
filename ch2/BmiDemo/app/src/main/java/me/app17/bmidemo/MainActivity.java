@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         double height = Double.valueOf(heightEdit.getText().toString());
         double weight = Double.valueOf(weightEdit.getText().toString());
+        //公分轉公尺
         double heightM = height / 100;
         double bmi = weight / Math.pow(heightM, 2);
         System.out.println((bmi));
