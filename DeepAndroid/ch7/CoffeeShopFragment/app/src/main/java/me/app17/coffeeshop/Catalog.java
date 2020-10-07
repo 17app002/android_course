@@ -1,91 +1,30 @@
-package me.app17.starboxfragment;
-
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+package me.app17.coffeeshop;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * 存放目錄
+ */
+public class Catalog {
+    private int id;
+    private String title;
 
-public class CatalogFragment extends Fragment {
+    private List<Item> itemList = new ArrayList<>();
 
-    public int catalog;
-    private ListView itemLv;
-
-    public CatalogFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cratalog, container, false);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-
-        //依照選項取得商品資料
-        final List<Item> itemList = getItemData(catalog);
-        List<String> titles = new ArrayList<>();
-
-        //整合商品名稱
-        for (Item item : itemList) {
-            titles.add(item.getTitle());
-        }
-
-        //設定適配器
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_1,
-                titles);
-
-        itemLv = getView().findViewById(R.id.item_list);
-        itemLv.setAdapter(arrayAdapter);
-
-        itemLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(), adapterView.getItemAtPosition(i).toString(),
-                        Toast.LENGTH_SHORT).show();
-                Item item=itemList.get(i);
-
-                System.out.println(item);
-            }
-
-
-        });
-    }
-
-
-    public void setCatalog(int catalog) {
-        this.catalog = catalog;
+    public Catalog(int id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
     /***
-     * 讀取商品列表
-     * @param catalog
+     * 讀取商品列表     *
      */
-    public List<Item> getItemData(int catalog) {
+    public List<Item> getItemList() {
 
-        List<Item> itemList = new ArrayList<>();
+        itemList = new ArrayList<>();
         //coffee
-        if (catalog == 0) {
+        if (id == 0) {
             itemList.add(new Item(R.drawable.coffee_0, "每日精選咖啡", "Brewed Coffee", 75,
                     "精心為您挑選來自不同產區的每日精選咖啡，帶給您多元的咖啡風味。"));
 
@@ -113,7 +52,7 @@ public class CatalogFragment extends Fragment {
                             "內含清香金桔、酸甜百香果，與淡雅甘甜的茉莉綠茶，交織出迷人芳香、酸中帶甜的美好滋味，滿滿的果粒更是咀嚼系不可錯過的選擇"));
 
 
-        } else if (catalog == 1) {
+        } else if (id == 1) {
             itemList.add(new Item(R.drawable.dessert_0, "地瓜燕麥奶吐司帕里尼", "Sweet Potato Oat Milk Toast Panini (with Egg & Nuts)", 175, "以燕麥奶生吐司夾入混和著多樣堅果的風味地瓜泥，如:高蛋白質紅藜麥、葵花子、核桃等，搭配煎蛋片、美生菜與牛蕃茄，多層次的健康美味。"));
 
             itemList.add(new Item(R.drawable.dessert_1, "蔬食肉排三明治", "Beyond Meat Sausage Sandwich", 235, "將蔬食肉(Beyond Meat)加入有咬感的菇類、花椰菜碎料等食材，手工捏製成肉排，夾在長型軟麵包中，加入新鮮牛番茄使整體更加清爽，搭配起司、洋菇片、拌炒過的洋蔥絲增添層次，抹上擬煙燻培根風味美乃茲，提增香氣。"));
@@ -133,6 +72,18 @@ public class CatalogFragment extends Fragment {
         }
 
         return itemList;
+
     }
 
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }
