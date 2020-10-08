@@ -22,18 +22,20 @@ public class ItemFragment extends Fragment {
     private TextView infoText;
     private TextView engText;
 
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (getArguments() != null) {
-            item = (Item) getArguments().getSerializable("ITEM");
+            item = (Item) getArguments().getSerializable("item");
         }
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_item, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.item_fragment, container, false);
 
         itemImage = root.findViewById(R.id.item_image);
         titleText = root.findViewById(R.id.title_text);
@@ -48,7 +50,7 @@ public class ItemFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if(item!=null) {
+        if (item != null) {
             itemImage.setImageResource(item.getResId());
             engText.setText(item.getSubTitle());
             titleText.setText(item.getTitle());

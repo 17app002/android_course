@@ -5,25 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#003529"
-
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/item_fragment"
+    <ListView
+        android:id="@+id/item_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/logo_text">
-    </FrameLayout>
+        android:layout_above="@+id/textView"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/item_list">
 
-    <TextView
-        android:id="@+id/logo_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#471C0C"
-        android:gravity="center"
-        android:text="www.starbox.com.tw"
-        android:textColor="#FFFFFF" />
+    </ListView>
 
 
 </RelativeLayout>

@@ -23,25 +23,26 @@ import java.util.List;
 
 public class CatalogFragment extends Fragment implements AdapterView.OnItemClickListener {
     private ListView itemLv;
-    private CatalogClickListener catalogClickListener;
     private int catalogId;
     private List<Item> itemList;
+    private CatalogClickListener catalogClickListener;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        //取得按鍵偵測參考
-        catalogClickListener = (CatalogClickListener) context;
         //取得傳入值
         if (getArguments() != null) {
-            catalogId = getArguments().getInt("CATALOG_ID");
+            catalogId = getArguments().getInt("catalog");
         }
+
+        catalogClickListener = (CatalogClickListener) context;
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_catalog, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.catalog_fragment, container, false);
         itemLv = root.findViewById(R.id.item_list);
         return root;
     }
@@ -66,14 +67,9 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemClick
         itemLv.setOnItemClickListener(this);
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (catalogClickListener != null) {
-            catalogClickListener.itemClicked(itemList.get(i));
-        }
+        catalogClickListener.itemClicked(itemList.get(i));
 
-        Toast.makeText(getContext(), adapterView.getItemAtPosition(i).toString(),
-                Toast.LENGTH_SHORT).show();
     }
 }
