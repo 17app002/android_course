@@ -140,7 +140,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/sex_edit" />
-
     <TextView
         android:id="@+id/bmi_text"
         android:layout_width="match_parent"
@@ -148,7 +147,6 @@
         android:layout_marginTop="12dp"
         android:background="@color/colorPrimary"
         android:gravity="center_horizontal"
-        android:shadowColor="#"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"

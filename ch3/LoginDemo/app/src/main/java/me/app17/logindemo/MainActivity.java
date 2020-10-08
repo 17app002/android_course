@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private String userName;
     private String passWord;
 
+    private final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         over18 = false;
         userName = "jerry";
         passWord = "123456";
-
-
         findViews();
 
 
@@ -50,24 +52,31 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String message="";
                 EditText nameEdit = findViewById(R.id.user_edit);
                 EditText passWordEdit = findViewById(R.id.password_edit);
-                TextView resultText=findViewById(R.id.result_text);
+                TextView resultText = findViewById(R.id.result_text);
 
-                if(!over18){
-                    System.out.println("未滿18歲，請離開");
-                    resultText.setText("未滿18歲，請離開");
+                if (!over18) {
+                    message=getResources().getString(R.string.under18);
+                    resultText.setText(getResources().getString(R.string.under18));
+
+                    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (nameEdit.getText().toString().equals(userName) &&
                         passWordEdit.getText().toString().equals(passWord)) {
-                    System.out.println("登入成功!");
-                    resultText.setText("登入成功!");
+                    Log.d(TAG, getResources().getString(R.string.loginSuccess));
+                    message=getResources().getString(R.string.loginSuccess);
+                    resultText.setText(getResources().getString(R.string.loginSuccess));
                 } else {
-                    System.out.println("登入失敗....");
-                    resultText.setText("登入失敗....");
+                    message=getResources().getString(R.string.loginSuccess);
+                    resultText.setText(getResources().getString(R.string.loginFail));
                 }
+
+                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -107,10 +116,16 @@ public class MainActivity extends AppCompatActivity {
                 radioButton.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                 radioButton.setChecked(true);
                 male = true;
+
                 if (id == R.id.female_rbn) {
                     male = false;
+                    ((ImageView) findViewById(R.id.face_img)).setImageResource(R.drawable.woman);
+                } else {
+                    ((ImageView) findViewById(R.id.face_img)).setImageResource(R.drawable.man);
                 }
-                Log.d("MainActivity", String.valueOf(male));
+
+
+                Log.d(TAG, String.valueOf(male));
             }
         });
     }

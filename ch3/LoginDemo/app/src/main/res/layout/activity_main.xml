@@ -12,12 +12,14 @@
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password_edit"
+        android:layout_above="@+id/logo_text"
         android:layout_alignLeft="@id/password_edit"
         android:layout_alignRight="@id/password_edit"
+
+
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="150dp"
         android:layout_marginRight="0dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/login" />
 
     <EditText
@@ -27,7 +29,7 @@
         android:layout_below="@+id/face_img"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:ems="10"
+        android:ems="12"
         android:inputType="textPersonName" />
 
     <TextView
@@ -59,12 +61,12 @@
         android:layout_below="@id/user_edit"
         android:layout_alignLeft="@id/user_edit"
         android:layout_marginTop="24dp"
-        android:ems="10"
+        android:ems="12"
         android:inputType="textPassword"
         android:hint="********" />
 
     <TextView
-        android:id="@+id/banner_text"
+        android:id="@+id/logo_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -77,11 +79,14 @@
         ></TextView>
 
     <ImageView
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
         android:id="@+id/face_img"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        app:srcCompat="@drawable/man"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/face_img" />
+         />
 
     <RadioGroup
         android:id="@+id/sex_rgp"
@@ -123,16 +128,27 @@
 
     <TextView
         android:id="@+id/result_text"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@+id/login_btn"
-        android:layout_above="@+id/banner_text"
-        android:layout_margin="6dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/login_btn"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="51dp"
+        android:layout_centerHorizontal="true"
         android:textSize="24sp"
-        android:gravity="center_horizontal|center_vertical"
         android:text="登入中...." />
+
+    <!--    <TextView-->
+<!--        android:id="@+id/result_text"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_below="@+id/login_btn"-->
+<!--        android:layout_above="@+id/banner_text"-->
+<!--        android:layout_margin="6dp"-->
+<!--        android:background="@color/colorPrimaryDark"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="24sp"-->
+<!--        android:gravity="center_horizontal|center_vertical"-->
+<!--        android:text="登入中...." />-->
 
 
 </RelativeLayout>

@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">PTT論壇登入</string>
-    <string name="hint_name">姓名</string>
+    <string name="app_name">PTT Forum</string>
+    <string name="hint_name">Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="over18">OVER 18</string>
     <string name="login">LOGIN</string>
+    <string name="loginSuccess">"LoginSuccess!"</string>
+    <string name="loginFail">"LoginFail!"</string>
+    <string name="under18">"Under 18 years old, please leave"</string>
 </resources>

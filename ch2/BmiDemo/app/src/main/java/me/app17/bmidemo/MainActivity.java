@@ -3,6 +3,7 @@ package me.app17.bmidemo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         double heightM = height / 100;
         double bmi = weight / Math.pow(heightM, 2);
         System.out.println((bmi));
-
+        Log.d("MainActivity", String.valueOf(bmi));
         ((TextView) findViewById(R.id.bmi_text)).setText(String.format("%6.2f", bmi));
         resultText.setText(getComment(bmi));
     }
