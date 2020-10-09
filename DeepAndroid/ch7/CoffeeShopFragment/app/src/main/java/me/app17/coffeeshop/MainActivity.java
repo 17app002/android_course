@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Bundle bundle = new Bundle();
         bundle.putInt("catalog", catalogId);
-        Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
+        Intent intent = new Intent(MainActivity.this, CatalogLandscapeActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
