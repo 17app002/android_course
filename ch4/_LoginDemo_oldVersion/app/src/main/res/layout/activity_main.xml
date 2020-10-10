@@ -103,14 +103,14 @@
             android:layout_height="wrap_content"
             android:text="@string/male"
             android:checked="true"
-            android:textSize="20sp" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
 
         <RadioButton
             android:id="@+id/female_rbn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/female"
-        android:textSize="20sp"/>
+            android:text="@string/female" />
     </RadioGroup>
 
 
@@ -123,6 +123,7 @@
         android:layout_alignLeft="@id/sex_rgp"
         android:layout_marginTop="12dp"
         android:text="@string/over18"
+        android:checked="true"
         android:textSize="24sp" />
 
     <TextView

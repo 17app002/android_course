@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="16dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="me.app17.logindemo.MainActivity">
 
     <Button
@@ -101,16 +100,16 @@
             android:id="@+id/male_rbn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/male"
             android:checked="true"
-            android:textSize="20sp" />
+            android:text="@string/male"
+            android:textSize="@dimen/midden_font_size" />
 
         <RadioButton
             android:id="@+id/female_rbn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/female"
-        android:textSize="20sp"/>
+        android:textSize="@dimen/midden_font_size"/>
     </RadioGroup>
 
 
