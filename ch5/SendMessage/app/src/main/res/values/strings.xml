@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Email發送程式</string>
+
+    <string-array name="email_cc">
+        <item></item>
+        <item>jerry@gmail.com</item>
+        <item>mary@gmail.com</item>
+        <item>kevin@gmail.com</item>
+        <item>kevlin@gmail.com</item>
+        <item>john@gmail.com</item>
+    </string-array>
+</resources>
