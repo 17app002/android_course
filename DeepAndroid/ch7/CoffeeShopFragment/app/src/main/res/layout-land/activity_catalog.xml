@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#003529"
+    android:orientation="horizontal"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/catalog_fragment"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_above="@+id/logo_text"
+        android:orientation="vertical"></LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/item_fragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/logo_text"
+        android:layout_toRightOf="@+id/catalog_fragment">
+        <ImageView
+
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon" />
+           >
+    </FrameLayout>
+
+
+
+    <TextView
+        android:id="@+id/logo_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#471C0C"
+        android:gravity="center"
+        android:text="www.starbox.com.tw"
+        android:textColor="#FFFFFF" />
+
+
+
+</RelativeLayout>

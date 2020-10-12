@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends FullScreenActivity implements View.OnClickListener{
 
     private ImageButton coffeeBtn;
     private ImageButton dessertBtn;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Bundle bundle = new Bundle();
         bundle.putInt("catalog", catalogId);
-        Intent intent = new Intent(MainActivity.this, CatalogLandscapeActivity.class);
+        Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

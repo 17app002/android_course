@@ -24,8 +24,14 @@ import java.util.List;
 public class CatalogFragment extends Fragment implements AdapterView.OnItemClickListener {
     private ListView itemLv;
     private int catalogId;
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
     private List<Item> itemList;
     private CatalogClickListener catalogClickListener;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -35,8 +41,11 @@ public class CatalogFragment extends Fragment implements AdapterView.OnItemClick
             catalogId = getArguments().getInt("catalog");
         }
 
+
         catalogClickListener = (CatalogClickListener) context;
     }
+
+
 
     @Nullable
     @Override

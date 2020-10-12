@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 /***
  * CatalogActivity
  */
-public class ItemActivity extends AppCompatActivity {
+public class ItemActivity extends FullScreenActivity {
     private ItemFragment itemFragment;
 
     @Override
