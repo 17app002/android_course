@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Email發送程式</string>
+    <string name="send">發信給</string>
+    <string name="ok">確定</string>
+    <string name="cancel">取消</string>
+    <string name="error">輸入錯誤!</string>
+
 
     <string-array name="email_cc">
         <item></item>
@@ -8,5 +13,6 @@
         <item>kevin@gmail.com</item>
         <item>kevlin@gmail.com</item>
         <item>john@gmail.com</item>
+        <item>iiiplay001@gmail.com</item>
     </string-array>
 </resources>

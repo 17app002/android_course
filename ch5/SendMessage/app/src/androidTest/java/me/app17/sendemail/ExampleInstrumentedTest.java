@@ -1,4 +1,4 @@
-package me.app17.ch05_01;
+package me.app17.sendemail;
 
 import android.content.Context;
 
@@ -21,7 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-
-        assertEquals("me.app17.ex05_01", appContext.getPackageName());
+        assertEquals("me.app17.linearlayoutdemo", appContext.getPackageName());
     }
 }
