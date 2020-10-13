@@ -5,8 +5,8 @@
     <string name="female">Female</string>
     <string name="over18">OVER 18</string>
     <string name="login">LOGIN</string>
-    <string name="login_success">"登入成功!"</string>
-    <string name="login_fail">"登入失敗!"</string>
-    <string name="under18">"未滿18歲，請離開"</string>
-    <string name="empty">"帳號或密碼不能為空!"</string>
+    <string name="login_success">登入成功!</string>
+    <string name="login_fail">登入失敗!</string>
+    <string name="under18">未滿18歲，請離開</string>
+    <string name="empty">帳號或密碼不能為空!</string>
 </resources>
