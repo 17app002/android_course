@@ -25,7 +25,7 @@
         android:textColor="@color/colorDarkRed"></TextView>
 
     <Spinner
-        style="@style/spinner_style"
+        android:theme="@style/spinner_style"
         android:id="@+id/emailcc_spr"
         android:background="@color/colorAccent"
         android:layout_width="match_parent"
