@@ -3,4 +3,7 @@
     <string name="start">遊戲開始</string>
     <string name="quit">遊戲結束</string>
     <string name="round">ROUND 1</string>
+    <string name="paper">布</string>
+    <string name="scissors">剪刀</string>
+    <string name="rock">石頭</string>
 </resources>
