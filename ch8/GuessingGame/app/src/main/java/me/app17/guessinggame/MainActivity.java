@@ -14,6 +14,12 @@ import java.util.List;
 import java.util.Random;
 
 
+enum WinState {
+    PLAYER_WIN,
+    COMPUTER_WIN,
+    EVEN;
+}
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton scissorsIbn;
@@ -22,15 +28,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button startBtn;
     private Button quitBtn;
 
-
     //玩家出拳
-    private int playerMoraIndex;
+    private Mora player;
     //電腦出拳
-    private int computerMoraIndex;
+    private Mora computer;
+    //勝負情況
+    private WinState winState;
     //遊戲局數
     private int round;
-    //是否玩家勝利
-    private boolean playerWin;
     //玩家勝場
     private int playerWinCount;
     //電腦勝場
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private final String TAG = "MainActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +57,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 取得電腦出拳
-     * 數字代表剪刀/石頭/布(0,1,2)
      *
      * @return
      */
     private int getComputerMora() {
-        return new Random().nextInt(3);
+        return new Random().nextInt(Mora.PAPER + 1);
     }
 
 
@@ -64,22 +69,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 初始遊戲
      */
     public void initGame() {
-        playerMoraIndex = -1;
-        computerMoraIndex = -1;
+        player = null;
+        computer = null;
+        winState = null;
         round = 0;
-        playerWin = false;
         playerWinCount = 0;
         computerWinCount = 0;
     }
 
-    public void findViews() {
 
+    public void findViews() {
         scissorsIbn = findViewById(R.id.scissors_ibn);
         rockIbn = findViewById(R.id.rock_ibn);
         paperIbn = findViewById(R.id.paper_ibn);
         startBtn = findViewById(R.id.start_btn);
         quitBtn = findViewById(R.id.quit_btn);
-
 
         scissorsIbn.setOnClickListener(this);
         rockIbn.setOnClickListener(this);
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void startGame() {
+
 
     }
 
