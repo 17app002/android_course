@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +17,20 @@ import java.util.Random;
 
 
 enum WinState {
-    PLAYER_WIN,
-    COMPUTER_WIN,
-    EVEN;
+    PLAYER_WIN("玩家勝利!"),
+    COMPUTER_WIN("電腦勝利!"),
+    EVEN("平手");
+
+    private String message;
+
+    WinState(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return message;
+    }
 }
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton scissorsIbn;
     private ImageButton rockIbn;
     private ImageButton paperIbn;
+    private ImageView playImg;
+    private ImageView computerImg;
+    private TextView roundText;
+
     private Button startBtn;
     private Button quitBtn;
 
@@ -84,39 +101,89 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         paperIbn = findViewById(R.id.paper_ibn);
         startBtn = findViewById(R.id.start_btn);
         quitBtn = findViewById(R.id.quit_btn);
+        //玩家出拳
+        playImg = findViewById(R.id.player_img);
+        playImg.setVisibility(View.INVISIBLE);
+        computerImg = findViewById(R.id.computer_img);
+        computerImg.setVisibility(View.INVISIBLE);
+        roundText = findViewById(R.id.round_text);
 
         scissorsIbn.setOnClickListener(this);
         rockIbn.setOnClickListener(this);
         paperIbn.setOnClickListener(this);
         startBtn.setOnClickListener(this);
         quitBtn.setOnClickListener(this);
-
     }
 
 
+    /***
+     * 開始遊戲
+     * 等待電腦出拳
+     */
     public void startGame() {
+        round++;
+        roundText.setText("ROUND " + round);
 
+        //如果玩家沒有出拳(強制出剪刀)
+        if (player == null) {
+            player = new Mora(Mora.SCISSOR);
+        }
 
+        //玩家出拳
+        playImg = findViewById(R.id.player_img);
+        playImg.setImageResource(getMoraImageResId(player.getIndex()));
+        playImg.setVisibility(View.VISIBLE);
+        //電腦出拳
+        computer = new Mora(getComputerMora());
+        computerImg = findViewById(R.id.computer_img);
+        computerImg.setImageResource(getMoraImageResId(computer.getIndex()));
+        computerImg.setVisibility(View.VISIBLE);
+
+        //判斷勝負
+        winState = Mora.getWinState(player, computer);
+        if (winState.equals(WinState.COMPUTER_WIN)) {
+            playerWinCount++;
+        } else if (winState.equals(winState.equals(WinState.PLAYER_WIN))) {
+            computerWinCount++;
+        }
+
+        Toast.makeText(this, winState.toString(), Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * 取得出拳圖形id
+     *
+     * @param index
+     * @return
+     */
+    public int getMoraImageResId(int index) {
+        int[] resId = {R.drawable.scissors, R.drawable.rock, R.drawable.paper};
+        if (index >= resId.length) {
+            index = 0;
+        }
+
+        return resId[index];
+    }
 
     @Override
     public void onClick(View view) {
 
-        ImageView playImg = findViewById(R.id.player_img);
         switch (view.getId()) {
             case R.id.scissors_ibn:
                 Log.d(TAG, getResources().getString(R.string.scissors));
-                ((ImageButton) view).getDrawable();
-                playImg.setImageResource(R.drawable.scissors);
+                //((ImageButton) view).getDrawable();
+                player = new Mora(Mora.SCISSOR);
+                startGame();
                 break;
             case R.id.rock_ibn:
                 Log.d(TAG, getResources().getString(R.string.rock));
-                playImg.setImageResource(R.drawable.rock);
+                player = new Mora(Mora.ROCK);
+                startGame();
                 break;
             case R.id.paper_ibn:
                 Log.d(TAG, getResources().getString(R.string.paper));
-                playImg.setImageResource(R.drawable.paper);
+                player = new Mora(Mora.PAPER);
+                startGame();
                 break;
             case R.id.start_btn:
                 Log.d(TAG, getResources().getString(R.string.start));
@@ -125,6 +192,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG, getResources().getString(R.string.quit));
                 break;
         }
+
+
+//        if(view instanceof ImageView){
+//            startGame();
+//        }
     }
 
 

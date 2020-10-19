@@ -12,6 +12,10 @@ public class Mora {
         this.index = index;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
     @Override
     public String toString() {
         final String[] MORA_NAME = {"剪刀", "石頭", "布"};

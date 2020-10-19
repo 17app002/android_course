@@ -13,6 +13,25 @@ import static org.junit.Assert.*;
  */
 
 public class ExampleUnitTest {
+
+    @Test
+    public void mora_testCorrect(){
+        Mora player = new Mora(Mora.SCISSOR);
+        Mora computer = new Mora(Mora.ROCK);
+        System.out.println(Mora.getWinState(player, computer));
+
+        System.out.println("=======================================");
+
+        for (int i = 0; i < Mora.PAPER+1; i++) {
+            player = new Mora(i);
+            for (int j = 0; j < Mora.PAPER+1; j++) {
+                computer = new Mora(j);
+                System.out.println("玩家:"+player + " vs " + "電腦:"+computer);
+                System.out.println(Mora.getWinState(player, computer));
+            }
+        }
+    }
+
     @Test
     public void addition_isCorrect() {
 
