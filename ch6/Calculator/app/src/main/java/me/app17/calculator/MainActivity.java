@@ -48,6 +48,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+//
+//    public void onClick(View v) {
+//
+//        int[] resId = {R.id.n1_btn, R.id.n2_btn, R.id.n3_btn,
+//                R.id.n4_btn, R.id.n5_btn, R.id.n6_btn, R.id.n7_btn,
+//                R.id.n8_btn, R.id.n9_btn, R.id.n0_btn, R.id.add_btn,
+//                R.id.dec_btn, R.id.multi_btn,
+//                R.id.div_btn,R.id.dot_btn};
+//
+//        for(int id:resId){
+//            if(v.getId()==id){
+//                addNumberText(((Button)v).getText().toString());
+//            }
+//        }
+//
+//    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.clear_btn:
