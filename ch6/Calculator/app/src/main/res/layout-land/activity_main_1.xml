@@ -167,5 +167,13 @@
             android:layout_column="3"
             android:onClick="onClick"
             android:text="=" />
+        <Spinner
+            android:id="@+id/decimal_spr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnSpan="4"
+            android:layout_gravity="fill_horizontal"
+            android:entries="@array/decimal_point"/>
     </GridLayout>
 </LinearLayout>

@@ -1,0 +1,80 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tmacsky"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:5:5-30:19
+12        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+12-->[androidx.core:core:1.3.1] C:\Users\User\.gradle\caches\transforms-2\files-2.1\ae3468b444d41a56f261ecbb8448fe17\core-1.3.1\AndroidManifest.xml:24:18-86
+13        android:debuggable="true"
+14        android:icon="@drawable/icon"
+14-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:6:9-38
+15        android:label="@string/app_name"
+15-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:7:9-41
+16        android:testOnly="true" >
+17        <activity
+17-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:8:9-17:20
+18            android:name="com.tmacsky.activity.SplashActivity"
+18-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:9:13-52
+19            android:icon="@drawable/icon"
+19-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:10:13-42
+20            android:label="@string/app_name"
+20-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:11:13-45
+21            android:theme="@android:style/Theme.NoTitleBar" >
+21-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:12:13-60
+22            <intent-filter>
+22-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:13:13-16:29
+23                <action android:name="android.intent.action.MAIN" />
+23-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:14:17-69
+23-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:14:25-66
+24
+25                <category android:name="android.intent.category.LAUNCHER" />
+25-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:15:17-77
+25-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:15:27-74
+26            </intent-filter>
+27        </activity>
+28        <activity android:name="com.tmacsky.activity.ActivityMain" />
+28-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:19:9-59
+28-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:19:19-56
+29        <activity android:name="com.tmacsky.activity.ActivityUser" />
+29-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:20:9-59
+29-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:20:19-56
+30        <activity android:name="com.tmacsky.activity.ActivityAccountBook" />
+30-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:21:9-66
+30-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:21:19-63
+31        <activity android:name="com.tmacsky.activity.ActivityCategory" />
+31-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:22:9-63
+31-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:22:19-60
+32        <activity android:name="com.tmacsky.activity.ActivityCategoryAddOrEdit" />
+32-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:23:9-72
+32-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:23:19-69
+33        <activity android:name="com.tmacsky.activity.ActivityCategoryChart" />
+33-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:24:9-68
+33-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:24:19-65
+34        <activity android:name="com.tmacsky.activity.ActivityPayoutAddOrEdit" />
+34-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:25:9-70
+34-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:25:19-67
+35        <activity android:name="com.tmacsky.activity.ActivityPayout" />
+35-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:26:9-61
+35-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:26:19-58
+36        <activity android:name="com.tmacsky.activity.ActivityStatistics" />
+36-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:27:9-65
+36-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:27:19-62
+37        <activity android:name="com.tmacsky.activity.AboutActivity" />
+37-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:28:9-60
+37-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:28:19-57
+38
+39        <service android:name="com.tmacsky.service.ServiceDatabaseBackup" />
+39-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:29:9-66
+39-->D:\Android\androidProject\ch8\AA-master\app\src\main\AndroidManifest.xml:29:18-63
+40    </application>
+41
+42</manifest>

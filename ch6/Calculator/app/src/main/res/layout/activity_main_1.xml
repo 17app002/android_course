@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:orientation="vertical"
     android:background="#6495ed"
+    android:orientation="vertical"
 
     tools:context="me.app17.calculator.MainActivity">
 
@@ -14,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="left|top"
         android:background="#ffc0cb"
-        android:text="0"
+        android:gravity="left|top"
         android:padding="6dp"
+        android:text="0"
         android:textSize="48sp"
         android:textStyle="bold" />
 
@@ -32,7 +32,9 @@
         android:rowCount="6">
 
         <Button
+
             android:id="@+id/clear_btn"
+            android:layout_row="0"
             android:layout_column="0"
             android:layout_columnSpan="3"
             android:layout_gravity="fill_horizontal"
@@ -43,6 +45,7 @@
             android:id="@+id/add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="0"
             android:layout_column="3"
             android:onClick="onClick"
             android:text="+" />
@@ -51,6 +54,7 @@
             android:id="@+id/n1_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="1"
             android:layout_column="0"
             android:onClick="onClick"
             android:text="1" />
@@ -59,6 +63,7 @@
             android:id="@+id/n2_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="1"
             android:layout_column="1"
             android:onClick="onClick"
             android:text="2" />
@@ -67,6 +72,7 @@
             android:id="@+id/n3_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="1"
             android:layout_column="2"
             android:onClick="onClick"
             android:text="3" />
@@ -75,6 +81,7 @@
             android:id="@+id/dec_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="1"
             android:layout_column="3"
             android:onClick="onClick"
             android:text="-" />
@@ -83,6 +90,7 @@
             android:id="@+id/n4_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="2"
             android:layout_column="0"
             android:onClick="onClick"
             android:text="4" />
@@ -91,6 +99,7 @@
             android:id="@+id/n5_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="2"
             android:layout_column="1"
             android:onClick="onClick"
             android:text="5" />
@@ -99,6 +108,7 @@
             android:id="@+id/n6_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="2"
             android:layout_column="2"
             android:onClick="onClick"
             android:text="6" />
@@ -107,6 +117,7 @@
             android:id="@+id/multi_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="2"
             android:layout_column="3"
             android:onClick="onClick"
             android:text="*" />
@@ -115,6 +126,7 @@
             android:id="@+id/n7_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="3"
             android:layout_column="0"
             android:onClick="onClick"
             android:text="7" />
@@ -123,6 +135,7 @@
             android:id="@+id/n8_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="3"
             android:layout_column="1"
             android:onClick="onClick"
             android:text="8" />
@@ -131,6 +144,7 @@
             android:id="@+id/n9_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="3"
             android:layout_column="2"
             android:onClick="onClick"
             android:text="9" />
@@ -139,6 +153,7 @@
             android:id="@+id/div_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="3"
             android:layout_rowSpan="2"
             android:layout_column="3"
             android:layout_gravity=""
@@ -149,7 +164,7 @@
             android:id="@+id/n0_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="5"
+            android:layout_row="4"
             android:layout_column="0"
             android:layout_columnSpan="2"
             android:layout_gravity="fill_horizontal"
@@ -160,6 +175,7 @@
             android:id="@+id/dot_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="4"
             android:layout_column="2"
             android:onClick="onClick"
             android:text="." />
@@ -168,8 +184,21 @@
             android:id="@+id/ans_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="4"
             android:layout_column="3"
             android:onClick="onClick"
             android:text="=" />
+
+        <Spinner
+            android:id="@+id/decimal_spr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:layout_columnSpan="4"
+            android:layout_gravity="fill_horizontal"
+            android:entries="@array/decimal_point">
+
+        </Spinner>
     </GridLayout>
 </LinearLayout>

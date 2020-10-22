@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,16 +19,32 @@ import javax.script.ScriptException;
 public class MainActivity extends AppCompatActivity {
 
     private TextView numberText;
+    private Spinner spinner;
     //紀錄是否重新輸入
     private boolean newStart;
+
+    private String decimal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_1);
         numberText = findViewById(R.id.number_text);
+        spinner = findViewById(R.id.decimal_spr);
         numberText.setMaxLines(3);
         newStart = true;
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                decimal = adapterView.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 
@@ -92,20 +110,27 @@ public class MainActivity extends AppCompatActivity {
     public void answer() {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
         try {
-            Object result = (double) engine.eval(numberText.getText().toString());
-            numberText.setGravity(Gravity.RIGHT|Gravity.BOTTOM);
+            String result = String.valueOf(engine.eval(numberText.getText().toString()));
+            numberText.setGravity(Gravity.RIGHT | Gravity.BOTTOM);
             newStart = true;
 
-            //檢查小數點尾數是否是0
-            String value=String.valueOf(result);
-            String[] temp=value.split("\\.");
 
-            if(temp[1].equals("0")){
-                result=temp[0];
+            if (!decimal.equals("")) {
+                String format = String.format(".%s", decimal);
+                result = String.format("%" + format + "f", Double.valueOf(result));
+                Log.d("MainActivity", result);
             }
 
-            numberText.setText(result.toString());
-            Log.d("ManActivity", result.toString());
+            //result = String.format("%.2f", Double.valueOf(result));
+
+            //檢查小數點尾數是否是0
+            String[] temp = result.split("\\.");
+            if (Long.valueOf(temp[1]).equals(0)) {
+                result = temp[0];
+            }
+
+            numberText.setText(result);
+            Log.d("ManActivity", result);
 
         } catch (ScriptException e) {
             Toast.makeText(this, "計算錯誤!", Toast.LENGTH_SHORT).show();

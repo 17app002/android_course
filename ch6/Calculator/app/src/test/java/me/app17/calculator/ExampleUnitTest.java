@@ -12,6 +12,16 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
+
+        //檢查小數點尾數是否是0
+        String value=String.valueOf(35.0);
+        String[] temp=value.split("\\.");
+        String result=null;
+        if(temp[1].equals("0")){
+            result=temp[0];
+        }
+
+        System.out.println(result);
         assertEquals(4, 2 + 2);
     }
 }
