@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("me.app17.stopwatch", appContext.getPackageName());
+        assertEquals("me.app17.stopwatch2", appContext.getPackageName());
     }
 }

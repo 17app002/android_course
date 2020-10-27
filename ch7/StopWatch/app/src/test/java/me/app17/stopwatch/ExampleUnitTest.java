@@ -1,4 +1,4 @@
-package me.app17.stopwatch;
+package me.app17.stopwatch2;
 
 import org.junit.Test;
 

@@ -1,8 +1,5 @@
 package me.app17.stopwatch;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+public class MainActivity1 extends AppCompatActivity implements View.OnClickListener {
 
     private TextView secondText;
     private Button startBtn;
@@ -58,6 +58,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         startTimer();
 
+
+        //handler = new Handler();
+
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                int hour = seconds / 3600;
+//                int minutes = (seconds % 3600) / 60;
+//                int sec = seconds % 60;
+//                String time = String.format("%d:%02d:%02d", hour, minutes, sec);
+//                secondText.setText(time);
+//                System.out.println(Thread.currentThread());
+//                if (!stop) {
+//                    seconds++;
+//                }
+//                //每一秒呼叫自己一次
+//                handler.postDelayed(this, 1000);
+//            }
+//        });
+
+
+        //Log.d(TAG, Thread.currentThread().toString());
+
+
         Log.d(TAG, "onCreate");
     }
 
@@ -66,15 +90,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(outState);
         outState.putInt("seconds", seconds);
         outState.putBoolean("stop", stop);
-        outState.putBoolean("stopStats",stopStats);
+        outState.putBoolean("stopStats", stopStats);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(TAG, "onPause");
         stopStats = stop;
         stop = true;
-        Log.d(TAG, "onPause");
     }
 
     @Override
@@ -92,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onRestart() {
+
         super.onRestart();
     }
 
@@ -151,8 +176,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (stop) {
                         continue;
                     }
-
                     seconds++;
+
+//                    //使用runnable
+//                    runOnUiThread(new Runnable() {
+//                        public void run() {
+//                            secondText.setText(timer);
+//                        }
+//                    });
                     String timer = updateTimer(seconds);
                     Log.d(TAG, timer);
                 }
