@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">mp3player</string>
+    <string name="music_list">音樂列表</string>
+    <string name="pause">暫停</string>
+    <string name="resume">恢復</string>
+    <string name="play">撥放</string>
+    <string name="complete">播放完畢</string>
+    <string name="error">檔案不存在</string>
+</resources>
